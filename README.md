@@ -9,7 +9,7 @@ Abstract component.
 
 ## CodeTransmitterController  
 Sample component that shows how a CodeTransmitter can be controlled.  
-This component will keep transmitting "SOS" with a delay between every transmission.  
+This component will keep transmitting a message with a delay between every transmission.  
 ![alt text](https://i.imgur.com/1JZCD3K.png)  
 The component requires a CodeTransmitter component.  
 
