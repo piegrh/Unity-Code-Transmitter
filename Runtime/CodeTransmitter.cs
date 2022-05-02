@@ -11,7 +11,7 @@ namespace Ulbe.Transmitter
 
         public event Action OnDeactivate;
 
-        public float TimeFactor = 10f;
+        public float Speed = 10f;
 
         private Coroutine _Coroutine;
 
@@ -32,7 +32,7 @@ namespace Ulbe.Transmitter
         protected virtual IEnumerator DoTransmit(string message)
         {
             Activate();
-            yield return new WaitForSeconds(1f * TimeFactor);
+            yield return new WaitForSeconds(1f * Speed);
             Deactivate();
         }
 
