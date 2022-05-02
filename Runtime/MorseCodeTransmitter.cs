@@ -64,7 +64,7 @@ namespace Ulbe.Transmitter
             {
                 if (message[i] == ' ')
                 {
-                    yield return new WaitForSeconds(NewWordDelay / TimeFactor);
+                    yield return new WaitForSeconds(NewWordDelay / Speed);
                     continue;
                 }
 
@@ -75,12 +75,12 @@ namespace Ulbe.Transmitter
                 foreach (var m in code)
                 {
                     Activate();
-                    yield return new WaitForSeconds((m == '.' ? DotFlashTime : DashFlashTime) / TimeFactor);
+                    yield return new WaitForSeconds((m == '.' ? DotFlashTime : DashFlashTime) / Speed);
                     Deactivate();
-                    yield return new WaitForSeconds(NewSymbolDelay / TimeFactor);
+                    yield return new WaitForSeconds(NewSymbolDelay / Speed);
                 }
 
-                yield return new WaitForSeconds(NewCharacterDelay / TimeFactor);
+                yield return new WaitForSeconds(NewCharacterDelay / Speed);
             }
             Transmitting = false;
         }
