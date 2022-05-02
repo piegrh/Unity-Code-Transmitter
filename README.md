@@ -18,7 +18,7 @@ A component that transmits morsecode.
 
 ## CodeTransmitterReceiver
 This components listens for OnActive and OnDeactivate events from a CodeTransmitter  
-and fires and corresponding UnityEvent.  
+and fires a corresponding UnityEvent.  
 ![alt text](https://i.imgur.com/iBwT15F.png)  
 OnActive:  
 1. Set material to the "on" material.
