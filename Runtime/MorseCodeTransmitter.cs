@@ -74,9 +74,9 @@ namespace Ulbe.Transmitter
                 string code = MorseCodeAlphabet[message[i]];
                 foreach (var m in code)
                 {
-                    TransmitStart();
+                    Activate();
                     yield return new WaitForSeconds((m == '.' ? DotFlashTime : DashFlashTime) / TimeFactor);
-                    TransmitStop();
+                    Deactivate();
                     yield return new WaitForSeconds(NewSymbolDelay / TimeFactor);
                 }
 

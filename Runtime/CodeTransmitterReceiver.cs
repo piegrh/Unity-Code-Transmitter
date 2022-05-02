@@ -8,10 +8,10 @@ namespace Ulbe.Transmitter
         public CodeTransmitter Transmitter;
 
         [SerializeField]
-        private UnityEvent OnTransmitEvent;
+        private UnityEvent OnActivate;
 
         [SerializeField]
-        private UnityEvent OnTransmitStopEvent;
+        private UnityEvent OnDeactivate;
 
         public void Awake()
         {
@@ -24,14 +24,14 @@ namespace Ulbe.Transmitter
 
         public void OnEnable()
         {
-            Transmitter.OnOnTransmitEvent += OnTransmitEvent.Invoke;
-            Transmitter.OnOnTransmitStopEvent += OnTransmitStopEvent.Invoke;
+            Transmitter.OnActivate += OnActivate.Invoke;
+            Transmitter.OnDeactivate += OnDeactivate.Invoke;
         }
 
         public void OnDisable()
         {
-            Transmitter.OnOnTransmitEvent -= OnTransmitEvent.Invoke;
-            Transmitter.OnOnTransmitStopEvent -= OnTransmitStopEvent.Invoke;
+            Transmitter.OnActivate -= OnActivate.Invoke;
+            Transmitter.OnDeactivate -= OnDeactivate.Invoke;
         }
     }
 }

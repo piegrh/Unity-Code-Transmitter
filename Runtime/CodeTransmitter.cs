@@ -7,9 +7,9 @@ namespace Ulbe.Transmitter
 {
     public abstract class CodeTransmitter : MonoBehaviour
     {
-        public event Action OnOnTransmitEvent;
+        public event Action OnActivate;
 
-        public event Action OnOnTransmitStopEvent;
+        public event Action OnDeactivate;
 
         public float TimeFactor = 10f;
 
@@ -25,20 +25,20 @@ namespace Ulbe.Transmitter
         public virtual void StopTransmitting()
         {
             StopCoroutine(_Coroutine);
-            TransmitStop();
+            OnDeactivate();
             _Coroutine = null;
         }
 
         protected virtual IEnumerator DoTransmit(string message)
         {
-            TransmitStart();
+            Activate();
             yield return new WaitForSeconds(1f * TimeFactor);
-            TransmitStop();
+            Deactivate();
         }
 
-        protected void TransmitStart() => OnOnTransmitEvent?.Invoke();
+        protected void Activate() => OnActivate?.Invoke();
 
-        protected void TransmitStop() => OnOnTransmitStopEvent?.Invoke();
+        protected void Deactivate() => OnDeactivate?.Invoke();
 
         public bool Transmitting { get; protected set; }
     }
