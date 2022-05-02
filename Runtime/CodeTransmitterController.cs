@@ -6,9 +6,12 @@ namespace Ulbe.Transmitter
     [RequireComponent(typeof(CodeTransmitter))]
     public class CodeTransmitterController : MonoBehaviour
     {
-        [HideInInspector] public CodeTransmitter Transmitter;
+        [HideInInspector] 
+        public CodeTransmitter Transmitter;
+
         public string Message;
-        public float startDelay = 1f;
+
+        public float StartDelay = 1f;
 
         void Awake()
         {
@@ -19,12 +22,12 @@ namespace Ulbe.Transmitter
         {
             if (Transmitter.Transmitting)
                 return;
-            StartCoroutine(Delay(startDelay));
+            StartCoroutine(Transmit());
         }
 
-        protected IEnumerator Delay(float delay)
+        protected IEnumerator Transmit()
         {
-            yield return new WaitForSeconds(delay);
+            yield return new WaitForSeconds(StartDelay);
             Transmitter.TransmitMessage(Message);
         }
     }

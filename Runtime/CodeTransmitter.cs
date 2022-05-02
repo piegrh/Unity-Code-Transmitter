@@ -8,24 +8,25 @@ namespace Ulbe.Transmitter
     public abstract class CodeTransmitter : MonoBehaviour
     {
         public event Action OnOnTransmitEvent;
-        public event Action OnOnTransmitStopEvent;
-        public float TimeFactor = 10f;
-        private Coroutine _coroutine;
 
-        public bool Transmitting { get; protected set; }
+        public event Action OnOnTransmitStopEvent;
+
+        public float TimeFactor = 10f;
+
+        private Coroutine _Coroutine;
 
         public void TransmitMessage(string message)
         {
             if (Transmitting)
                 return;
-            _coroutine = StartCoroutine(DoTransmit(message));
+            _Coroutine = StartCoroutine(DoTransmit(message));
         }
 
         public virtual void StopTransmitting()
         {
-            StopCoroutine(_coroutine);
+            StopCoroutine(_Coroutine);
             TransmitStop();
-            _coroutine = null;
+            _Coroutine = null;
         }
 
         protected virtual IEnumerator DoTransmit(string message)
@@ -38,5 +39,7 @@ namespace Ulbe.Transmitter
         protected void TransmitStart() => OnOnTransmitEvent?.Invoke();
 
         protected void TransmitStop() => OnOnTransmitStopEvent?.Invoke();
+
+        public bool Transmitting { get; protected set; }
     }
 }

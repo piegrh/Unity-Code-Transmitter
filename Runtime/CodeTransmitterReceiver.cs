@@ -6,8 +6,12 @@ namespace Ulbe.Transmitter
     public class CodeTransmitterReceiver : MonoBehaviour
     {
         public CodeTransmitter Transmitter;
-        [SerializeField] private UnityEvent OnTransmitEvent;
-        [SerializeField] private UnityEvent OnTransmitStopEvent;
+
+        [SerializeField]
+        private UnityEvent OnTransmitEvent;
+
+        [SerializeField]
+        private UnityEvent OnTransmitStopEvent;
 
         public void Awake()
         {

@@ -7,9 +7,13 @@ namespace Ulbe.Transmitter
     public class MorseCodeTransmitter : CodeTransmitter
     {
         protected const float DotFlashTime = 1f;
+
         protected const float DashFlashTime = 3f;
+
         protected const float NewSymbolDelay = 1f;
+
         protected const float NewCharacterDelay = 3f;
+
         protected const float NewWordDelay = 4f;
 
         protected static Dictionary<char, string> MorseCodeAlphabet = new Dictionary<char, string>()
