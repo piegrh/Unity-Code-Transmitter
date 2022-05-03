@@ -17,7 +17,7 @@ namespace Ulbe.Transmitter
         {
             if (Transmitter is null)
             {
-                Debug.LogError($"{this} missing Transmitter!");
+                Debug.LogError($"{gameObject.name} is missing a CodeTransmitter!", gameObject);
                 Destroy(this);
             }
         }

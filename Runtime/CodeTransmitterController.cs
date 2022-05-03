@@ -20,7 +20,7 @@ namespace Ulbe.Transmitter
 
         void Update()
         {
-            if (Transmitter.Transmitting)
+            if (Transmitter.IsTransmitting)
                 return;
             StartCoroutine(Transmit());
         }

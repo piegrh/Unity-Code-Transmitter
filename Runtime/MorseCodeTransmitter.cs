@@ -59,7 +59,7 @@ namespace Ulbe.Transmitter
         protected override IEnumerator DoTransmit(string message)
         {
             message = message.ToUpper();
-            Transmitting = true;
+            IsTransmitting = true;
             for (int i = 0; i < message.Length; i++)
             {
                 if (message[i] == ' ')
@@ -82,7 +82,7 @@ namespace Ulbe.Transmitter
 
                 yield return new WaitForSeconds(NewCharacterDelay / Speed);
             }
-            Transmitting = false;
+            IsTransmitting = false;
         }
     }
 }

@@ -17,7 +17,7 @@ namespace Ulbe.Transmitter
 
         public void TransmitMessage(string message)
         {
-            if (Transmitting)
+            if (IsTransmitting)
                 return;
             _Coroutine = StartCoroutine(DoTransmit(message));
         }
@@ -25,7 +25,7 @@ namespace Ulbe.Transmitter
         public virtual void StopTransmitting()
         {
             StopCoroutine(_Coroutine);
-            OnDeactivate();
+            Deactivate();
             _Coroutine = null;
         }
 
@@ -40,6 +40,6 @@ namespace Ulbe.Transmitter
 
         protected void Deactivate() => OnDeactivate?.Invoke();
 
-        public bool Transmitting { get; protected set; }
+        public bool IsTransmitting { get; protected set; }
     }
 }
