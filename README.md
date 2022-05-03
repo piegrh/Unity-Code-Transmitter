@@ -1,7 +1,6 @@
 # CodeTransmitter
 ![alt text](https://i.imgur.com/PqU9sRA.gif)  
-This is a Unity package for creating stuff like this:  A man signaling SOS in morsecode by blinking.  
-It can easily be extended to support other codes as well by creating a subclass the CodeTransmitter component.  
+This is a Unity package for creating stuff like this:  A man signaling SOS in morsecode by blinking.   
 [Youtube example](https://www.youtube.com/watch?v=CN8wYa_Jrjs).
 
 ## CodeTransmitter
