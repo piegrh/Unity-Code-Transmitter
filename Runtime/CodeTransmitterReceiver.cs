@@ -16,6 +16,9 @@ namespace Ulbe.Transmitter
         public void Awake()
         {
             if (Transmitter is null)
+                Transmitter = GetComponent<CodeTransmitter>();
+
+            if (Transmitter is null)
             {
                 Debug.LogError($"{gameObject.name} is missing a CodeTransmitter!", gameObject);
                 Destroy(this);
