@@ -56,7 +56,7 @@ namespace Ulbe.Transmitter
             {'9', "----."},
         };
 
-        protected override IEnumerator DoTransmit(string message)
+        protected override IEnumerator DoTransmit(string message, float speed = 10f)
         {
             message = message.ToUpper();
             IsTransmitting = true;
@@ -64,7 +64,7 @@ namespace Ulbe.Transmitter
             {
                 if (message[i] == ' ')
                 {
-                    yield return new WaitForSeconds(NewWordDelay / Speed);
+                    yield return new WaitForSeconds(NewWordDelay / speed);
                     continue;
                 }
 
@@ -75,12 +75,12 @@ namespace Ulbe.Transmitter
                 foreach (var m in code)
                 {
                     Activate();
-                    yield return new WaitForSeconds((m == '.' ? DotFlashTime : DashFlashTime) / Speed);
+                    yield return new WaitForSeconds((m == '.' ? DotFlashTime : DashFlashTime) / speed);
                     Deactivate();
-                    yield return new WaitForSeconds(NewSymbolDelay / Speed);
+                    yield return new WaitForSeconds(NewSymbolDelay / speed);
                 }
 
-                yield return new WaitForSeconds(NewCharacterDelay / Speed);
+                yield return new WaitForSeconds(NewCharacterDelay / speed);
             }
             IsTransmitting = false;
         }

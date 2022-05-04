@@ -11,7 +11,9 @@ namespace Ulbe.Transmitter
 
         public string Message;
 
-        public float StartDelay = 1f;
+        public float Delay = 1f;
+
+        public float Speed = 10f;
 
         void Awake()
         {
@@ -27,8 +29,8 @@ namespace Ulbe.Transmitter
 
         protected IEnumerator Transmit()
         {
-            yield return new WaitForSeconds(StartDelay);
-            Transmitter.TransmitMessage(Message);
+            yield return new WaitForSeconds(Delay);
+            Transmitter.TransmitMessage(Message,Speed);
         }
     }
 }

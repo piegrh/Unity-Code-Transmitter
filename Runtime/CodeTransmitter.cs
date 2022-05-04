@@ -11,15 +11,13 @@ namespace Ulbe.Transmitter
 
         public event Action OnDeactivate;
 
-        public float Speed = 10f;
-
         private Coroutine _Coroutine;
 
-        public void TransmitMessage(string message)
+        public void TransmitMessage(string message, float speed)
         {
             if (IsTransmitting)
                 return;
-            _Coroutine = StartCoroutine(DoTransmit(message));
+            _Coroutine = StartCoroutine(DoTransmit(message, speed));
         }
 
         public virtual void StopTransmitting()
@@ -29,10 +27,10 @@ namespace Ulbe.Transmitter
             _Coroutine = null;
         }
 
-        protected virtual IEnumerator DoTransmit(string message)
+        protected virtual IEnumerator DoTransmit(string message, float speed = 10)
         {
             Activate();
-            yield return new WaitForSeconds(1f * Speed);
+            yield return new WaitForSeconds(1f * speed);
             Deactivate();
         }
 
