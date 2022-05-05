@@ -25,13 +25,16 @@ namespace Ulbe.Transmitter
             StopCoroutine(_Coroutine);
             Deactivate();
             _Coroutine = null;
+            IsTransmitting = false;
         }
 
         protected virtual IEnumerator DoTransmit(string message, float speed = 10)
         {
+            IsTransmitting = true;
             Activate();
             yield return new WaitForSeconds(1f * speed);
             Deactivate();
+            IsTransmitting = false;
         }
 
         protected void Activate() => OnActivate?.Invoke();
